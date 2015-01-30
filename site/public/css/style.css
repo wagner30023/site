@@ -143,7 +143,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 
 
 
-img {height: 500px; width: 1080px; border: 60px; margin-left: 53px}
+img {height: 293px; width: 930px; border: 60px; margin-left: 120px}
 
 div.carousel-caption {
    width: 1048px; 
@@ -413,4 +413,10 @@ div.carousel-caption {
 #voltar a {
   color: #CCC;
   border: none;
+}
+
+
+#img {
+    width: 1000px;
+    height: 293px;
 }

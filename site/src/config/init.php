@@ -8,14 +8,14 @@
  */
 
 /*
-function getConnection() {
-    try {
-        return new \PDO(DSN, USER, PASS);
-    } catch (Exception $exc) {
-        echo $exc->getTraceAsString() . $exc->getCode();
-    }
-}
-*/
+  function getConnection() {
+  try {
+  return new \PDO(DSN, USER, PASS);
+  } catch (Exception $exc) {
+  echo $exc->getTraceAsString() . $exc->getCode();
+  }
+  }
+ */
 
 
 
@@ -29,31 +29,33 @@ function getConnection() {
 
 function getPage($pageName) {
     try {
-       $db = getConnection();
+        $db = getConnection();
         switch ($pageName) {
             case "index":
             case "empresa":
-                $sql = "SELECT * FROM Paginas WHERE nome = :nome";
+                $sql = "SELECT titulo,texto FROM Paginas WHERE nome = :nome";
                 $stmt = $db->prepare($sql);
                 $stmt->bindValue("nome", $pageName);
                 $stmt->execute();
+                //return $result;
+                return $stmt;
                 break;
             case "produto":
             case "servico":
-                $sql = "SELECT * FROM " . ucfirst($pageName);
-                $stmt = $db->prepare($sql); 
+                $sql = "SELECT nome,descricao from Produtos GROUP BY nome = :nome and descricao = :descricao";
+                $stmt = $db->prepare($sql);
+                $stmt->bindValue("nome", $pageName);
+                $stmt->bindValue("descricao", $pageName);
                 $stmt->execute();
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $result;
                 break;
-                //return NULL;
         }
-        //return $result;
     } catch (Exception $exc) {
         echo $exc->getTraceAsString();
     }
 }
 
-    
 function listarConteudo($pagina) {
     try {
         $conexao = new \PDO(DSN, USER, PASS);
@@ -69,26 +71,25 @@ function listarConteudo($pagina) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
-
-function busca($termo, \PDO $db) {
-    $stmt = "SELECT * FROM Paginas WHERE LIKE texto = :termo";
+function busca($termo) {
+    $db = getConnection();
+    $stmt = $db->prepare("SELECT * FROM Paginas WHERE LIKE texto = :termo");
     $termo = "%$termo%";
     $stmt->bindParam("termo", $termo);
     $stmt->execute();
-    $result["Paginas"] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    $result["Paginas"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $stmt = $db->prepare("SELECT * FROM Produtos WHERE descricao LIKE :termo");
     $termo = "%{$termo}%";
     $stmt->bindParam("termo", $termo);
     $stmt->execute();
-    $result["Produtos"] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    $result["Produtos"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $stmt = $db->prepare("SELECT * FROM Servicos WHERE descricao LIKE :termo");
     $termo = "%{$termo}%";
     $stmt->bindParam("termo", $termo);
     $stmt->execute();
-    $result["Servicos"] = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    $result["Servicos"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     return $result;
 }

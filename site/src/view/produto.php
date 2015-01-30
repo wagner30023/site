@@ -1,25 +1,25 @@
 
-<html lang="pt-br">
-    <body>
+<div class="container text-center">
+    <div class="row">
         <?php include 'header.php'; ?>
 
-        <div class="container">
-            <div class="page-header">
-                <h1>Produtos</h1>
-            </div>
-            <?php
-            $produtos = getPage("produto");
-            foreach ($produtos as $produto):
-                ?>
-                <div class="col-sm-3">
-                    <h2><?php echo $produto["nome"]; ?></h2>
-                    <p><?php echo $produto["descricao"]; ?></p>
-                    <button class="btn btn-info">Detalhes </button>
-                </div>
-                <?php
-            endforeach;
+        <?php
+        $pagina = getPage('produto');
+        ?>
+        <?php
+        foreach ($pagina as $produto):
             ?>
-        </div>
-        <?php include 'footer.php' ?>
-    </body>
-</html>
+            <div class="col-sm-3">
+                <?php echo "<div class=\"col-sm-4\" id=\"{$produto['nome']}\">"; ?>
+                <?php echo "<div class=\"col-sm-4\" id=\"{$produto['descricao']}\">"; 
+                    echo utf8_encode("{$produto['nome']}");
+                    echo utf8_encode("{$produto['descricao']}");
+                
+                ?>
+              </div>
+            <?php
+        endforeach;
+        ?>
+    </div>
+</div>
+<?php include 'footer.php' ?>

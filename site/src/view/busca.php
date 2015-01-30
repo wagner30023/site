@@ -1,5 +1,5 @@
 <?php
-    $resultado = busca($_POST["busca"], $db);
+    $resultado = busca($_POST["busca"]);
 ?>
 <div class="container">
     <div class="page-header">

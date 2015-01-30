@@ -1,14 +1,21 @@
 <?php include_once "header.php"; ?>
 <?php
-    $pageName = $route == "/" ? "index" : ltrim($route, "/");
-    $pagina = getPage($pageName);
+$pagina = getPage("index");
 ?>
+<img src="img/tree.png" id="img"/>
+
 <div class="container">
     <div class="page-header">
-        <h1><?php echo $pagina["titulo"]  ?></h1>
+        <?php
+        foreach ($pagina as $home):
+            ?>
+            <div class="col-sm-3">
+                <h2><?php echo $home["titulo"]; ?></h2>
+                <p><?php echo $home["texto"]; ?></p>
+            </div>
+            <?php
+        endforeach;
+        ?>
     </div>
-    <?php
-        echo $pagina["texto"];
-    ?>
 </div>
 <?php include_once "footer.php"; ?>

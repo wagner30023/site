@@ -1,23 +1,45 @@
 <?php
-require_once __DIR__ . "/src/Functions/Functions.php";
-$db = getConnection();
-// Apaga o Banco de Dados
+
+require_once './src/config/bd_config.php';
+
+try {
+    $conexao = new PDO(DSN, USER, PASS);
+} catch (\PDOException $e) {
+    die("Error código: " . $e->getCode() . ": " . $e->getMessage());
+}
+
+// cria o banco de dados
+echo "========================== Criando banco de dados ======================== \n\n";
 $statement = "DROP DATABASE site";
-$db->exec($statement);
+$conexao->exec($statement);
 // Cria o Banco de Dados
 $statement = "CREATE DATABASE IF NOT EXISTS site";
-$db->exec($statement);
+$conexao->exec($statement);
 // Seleciona o Banco de Dados
 $statement = "USE site";
-$db->exec($statement);
+$conexao->exec($statement);
+
+echo "========================== OK ============================================\n\n";
+
 // Cria a tabela Produtos
+
+echo "========================== Criando table Produtos ======================== \n\n";
+
 $statement = "CREATE TABLE IF NOT EXISTS Produtos (
   id int(11) NOT NULL AUTO_INCREMENT,
   nome varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   descricao text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1";
-$db->exec($statement);
+$conexao->exec($statement);
+
+echo "========================== OK ============================================ \n\n";
+
+
+// Insere dados na tabela Produtos
+
+echo "========================== Inserindo dados em Produtos ===================\n\n";
+
 // Insere dados na tabela Produtos
 $statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de narrativa da angústia', '". 
         addslashes("Ao examinar-se o contato poético interpretativo, uma escolha se faz necessária: ou rejeitar o contato "
@@ -27,7 +49,7 @@ $statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de 
                 . " a expressão 'paradigma textual do discurso' para exprimir não, com efeito, contato poético, mas sim "
                 . "trans-contato poético."
                 )."')";
-$db->exec($statement);
+$conexao->exec($statement);
 $statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o contato poético', '". 
         addslashes("'A classe social poderá no futuro ser um organismo sem vida', questiona Hélène Cixous; contudo, "
                 . "conforme Carvalho (1990), não se trata precisamente de como a classe social poderá no futuro ser "
@@ -37,7 +59,7 @@ $statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o
                 . "estrutura sem Roland Barthes existem. Luce Iragaray proporciona a utilização de paradigma regional "
                 . "do contexto para reler toda forma do sexismo."
                 ) ."')";
-$db->exec($statement);
+$conexao->exec($statement);
 $statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de identidade da textualidade', '". 
         addslashes("O observador poderá no futuro ser interpolado em um tipo de 'contato poético interpretativo' que "
                 . "inclui a linguagem como uma forma de cosmos. De certa forma, admitindo-se o paradigma semi-cultural "
@@ -46,14 +68,54 @@ $statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de 
                 . "poderá no futuro ser não, na prática, paródia, mas sim pré-paródia. Jacques Lacan emprega a expressão "
                 . "'paradigma semi-cultural do Ocidente' para referir-se a um absurdo referencial."
                 ) ."')";
-$db->exec($statement);
-// Cria a tabela Servicos
+$conexao->exec($statement);
+// Insere dados na tabela Produtos
+$statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de narrativa da angústia', '". 
+        addslashes("Ao examinar-se o contato poético interpretativo, uma escolha se faz necessária: ou rejeitar o contato "
+                . "poético interpretativo ou concluir de como o discurso nasce  do método científico. Porém Julia Kristeva "
+                . "lembra a utilização  de teoria semi-dialética do significante para sufocar toda forma 'teoria literária "
+                . "sem Gayatri Spivak' que inclui a verdade como uma forma de inteiro. De tal maneira, Michael Bérubé aceita"
+                . " a expressão 'paradigma textual do discurso' para exprimir não, com efeito, contato poético, mas sim "
+                . "trans-contato poético."
+                )."')";
+$conexao->exec($statement);
+$statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o contato poético', '". 
+        addslashes("'A classe social poderá no futuro ser um organismo sem vida', questiona Hélène Cixous; contudo, "
+                . "conforme Carvalho (1990), não se trata precisamente de como a classe social poderá no futuro ser "
+                . "um organismo sem vida, mas sim de como isto seja válido para a textualidade, e em decorrência a "
+                . "carnavalização, da classe social. Hélène Cixous proporciona a utilização de conservacionismo neo-"
+                . "participativo para analisar a classe social. Poderia-se dizer de como muitas nações referentes à "
+                . "estrutura sem Roland Barthes existem. Luce Iragaray proporciona a utilização de paradigma regional "
+                . "do contexto para reler toda forma do sexismo."
+                ) ."')";
+$conexao->exec($statement);
+$statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de identidade da textualidade', '". 
+        addslashes("O observador poderá no futuro ser interpolado em um tipo de 'contato poético interpretativo' que "
+                . "inclui a linguagem como uma forma de cosmos. De certa forma, admitindo-se o paradigma semi-cultural "
+                . "do Ocidente, temos de optar entre a teoria nacionalista do paradigma e o paradigma semi-cultural do "
+                . "Ocidente. O tema contundente da crítica de Souza (1976) sobre o conservacionismo neo-participativo "
+                . "poderá no futuro ser não, na prática, paródia, mas sim pré-paródia. Jacques Lacan emprega a expressão "
+                . "'paradigma semi-cultural do Ocidente' para referir-se a um absurdo referencial."
+                ) ."')";
+$conexao->exec($statement);
+
+echo "========================== OK ============================================ \n\n";
+
+// Cria tabela Serviços 
+echo "========================== Criando table Servicos ======================== \n\n";
+
 $statement = "CREATE TABLE IF NOT EXISTS Servicos (
   id int(11) NOT NULL AUTO_INCREMENT,  
   descricao text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1";
-$db->exec($statement);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1"; 
+
+$conexao->exec($statement);
+echo "========================== OK ============================================ \n\n";
+
+// Insere dados na tabela Serviços
+echo "========================== Inserindo dados em Servicos =================== \n\n";
+
 // Insere dados na tabela Servicos
 $statement = "INSERT INTO Servicos(descricao) VALUES('". 
         addslashes("De tal maneira, o produtor tem sido interpolado em um tipo de 'conservacionismo neo-participativo' que "
@@ -72,7 +134,7 @@ $statement = "INSERT INTO Servicos(descricao) VALUES('".
                 . "o valor atual do paradigma semi-cultural do Ocidente deduz de como a sociedade, talvez ironicamente, possui "
                 . "uma possibilidade teórica. Um número de construções referentes a uma realidade auto-referencial existem."
                 ) ."')";
-$db->exec($statement);
+$conexao->exec($statement);
 $statement = "INSERT INTO Servicos(descricao) VALUES('". 
         addslashes("O leitor costumou ser contextualizado em um tipo de 'conservacionismo neo-participativo' que inclui a "
                 . "linguagem como uma forma de paradoxo. Buxton (1990) permite de como temos de optar entre o paradigma "
@@ -91,8 +153,14 @@ $statement = "INSERT INTO Servicos(descricao) VALUES('".
                 . "'conservacionismo neo-participativo' que inclui a realidade como uma forma de efeito. Inúmeros significados "
                 . "referentes ao conservacionismo neo-participativo podem ser obtidos."
                 ) ."')";
-$db->exec($statement);
-// Cria tabela Paginas
+$conexao->exec($statement);
+
+echo "========================== OK ============================================ \n\n";
+
+
+// Cria a tabela Páginas 
+echo "========================== Criando table Paginas =========================\n\n";
+
 $statement = "CREATE TABLE IF NOT EXISTS Paginas (
   id int(11) NOT NULL AUTO_INCREMENT,
   nome varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -100,8 +168,14 @@ $statement = "CREATE TABLE IF NOT EXISTS Paginas (
   texto text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1";
-$db->exec($statement);
-// Insere dados na tabela Paginas
+$conexao->exec($statement);
+echo "========================== OK ============================================ \n\n";
+
+
+echo "========================== Inserindo dados em Páginas ==================== \n\n";
+
+// Insere dados na tabela Páginas
+
 $statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('index', 'Site Simples em PHP','". 
         addslashes("<p class=\"lead\">Oswald de Andrade e a narrativa pós-imaterial</p><p>Ao examinar-se a teoria narrativa do "
                 . "código, uma escolha se faz necessária: ou desaprovar o capital hierárquico ou concluir de como a sociedade "
@@ -123,7 +197,7 @@ $statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('index', 'Site Sim
                 . "pós-participativa. Contudo, Dahmus (2007) possibilita de como temos de decidir entre o capital hierárquico e "
                 . "a teoria intertextual pós-participativa.</p>"
                 ) ."')";
-$db->exec($statement);
+$conexao->exec($statement);
 $statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('empresa', 'Empresa','". 
         addslashes("<p>Gloria Anzaldúa propõe a expressão 'paradigma sub-metonímico do contexto' para exprimir não, na verdade, "
                 . "situacionismo, mas sim não-situacionismo. Dahmus (2005) afirma de como o corpus de Jack Kerouac costumou ser "
@@ -134,4 +208,5 @@ $statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('empresa', 'Empres
                 . "totalidade. Dahmus (2000) permite de como temos de escolher entre a matéria semântica e a teoria intertextual "
                 . "pós-participativa.</p>"
                 ) ."')";
-$db->exec($statement);
+$conexao->exec($statement);
+echo "========================== OK ============================================ \n\n";

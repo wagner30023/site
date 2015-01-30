@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/css/bootstrap-responsive.css" /> 
         <link rel="stylesheet" href="/css/style.css" /> 
         <link rel="stylesheet" href="/css/styles.css" /> 
+        <link rel="stylesheet" href="/css/custom.css" /> 
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -47,6 +48,8 @@
                         <button type="submit" class="btn"><span class="icon-search icon-large"> </span></button>
                     </form>
                 </div>
+              
             </div>
+
         </nav>
 
