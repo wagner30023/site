@@ -41,16 +41,17 @@ echo "========================== OK ============================================
 echo "========================== Inserindo dados em Produtos ===================\n\n";
 
 // Insere dados na tabela Produtos
-$statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de narrativa da angústia', '". 
+utf8_encode($statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de narrativa da angústia', '". 
         addslashes("Ao examinar-se o contato poético interpretativo, uma escolha se faz necessária: ou rejeitar o contato "
                 . "poético interpretativo ou concluir de como o discurso nasce  do método científico. Porém Julia Kristeva "
                 . "lembra a utilização  de teoria semi-dialética do significante para sufocar toda forma 'teoria literária "
                 . "sem Gayatri Spivak' que inclui a verdade como uma forma de inteiro. De tal maneira, Michael Bérubé aceita"
                 . " a expressão 'paradigma textual do discurso' para exprimir não, com efeito, contato poético, mas sim "
                 . "trans-contato poético."
-                )."')";
+                )."')");
 $conexao->exec($statement);
-$statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o contato poético', '". 
+
+utf8_encode($statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o contato poético', '". 
         addslashes("'A classe social poderá no futuro ser um organismo sem vida', questiona Hélène Cixous; contudo, "
                 . "conforme Carvalho (1990), não se trata precisamente de como a classe social poderá no futuro ser "
                 . "um organismo sem vida, mas sim de como isto seja válido para a textualidade, e em decorrência a "
@@ -58,28 +59,35 @@ $statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o
                 . "participativo para analisar a classe social. Poderia-se dizer de como muitas nações referentes à "
                 . "estrutura sem Roland Barthes existem. Luce Iragaray proporciona a utilização de paradigma regional "
                 . "do contexto para reler toda forma do sexismo."
-                ) ."')";
+                ) ."')");
+
 $conexao->exec($statement);
-$statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de identidade da textualidade', '". 
+
+utf8_encode($statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de identidade da textualidade', '". 
         addslashes("O observador poderá no futuro ser interpolado em um tipo de 'contato poético interpretativo' que "
                 . "inclui a linguagem como uma forma de cosmos. De certa forma, admitindo-se o paradigma semi-cultural "
                 . "do Ocidente, temos de optar entre a teoria nacionalista do paradigma e o paradigma semi-cultural do "
                 . "Ocidente. O tema contundente da crítica de Souza (1976) sobre o conservacionismo neo-participativo "
                 . "poderá no futuro ser não, na prática, paródia, mas sim pré-paródia. Jacques Lacan emprega a expressão "
                 . "'paradigma semi-cultural do Ocidente' para referir-se a um absurdo referencial."
-                ) ."')";
+                ) ."')");
+
+
 $conexao->exec($statement);
 // Insere dados na tabela Produtos
-$statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de narrativa da angústia', '". 
+
+utf8_encode($statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de narrativa da angústia', '". 
         addslashes("Ao examinar-se o contato poético interpretativo, uma escolha se faz necessária: ou rejeitar o contato "
                 . "poético interpretativo ou concluir de como o discurso nasce  do método científico. Porém Julia Kristeva "
                 . "lembra a utilização  de teoria semi-dialética do significante para sufocar toda forma 'teoria literária "
                 . "sem Gayatri Spivak' que inclui a verdade como uma forma de inteiro. De tal maneira, Michael Bérubé aceita"
                 . " a expressão 'paradigma textual do discurso' para exprimir não, com efeito, contato poético, mas sim "
                 . "trans-contato poético."
-                )."')";
+                )."')");
+
 $conexao->exec($statement);
-$statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o contato poético', '". 
+
+utf8_encode($statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o contato poético', '". 
         addslashes("'A classe social poderá no futuro ser um organismo sem vida', questiona Hélène Cixous; contudo, "
                 . "conforme Carvalho (1990), não se trata precisamente de como a classe social poderá no futuro ser "
                 . "um organismo sem vida, mas sim de como isto seja válido para a textualidade, e em decorrência a "
@@ -87,16 +95,19 @@ $statement = "INSERT INTO Produtos(nome,descricao) VALUES('Haroldo de Campos e o
                 . "participativo para analisar a classe social. Poderia-se dizer de como muitas nações referentes à "
                 . "estrutura sem Roland Barthes existem. Luce Iragaray proporciona a utilização de paradigma regional "
                 . "do contexto para reler toda forma do sexismo."
-                ) ."')";
+                ) ."')");
+
 $conexao->exec($statement);
-$statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de identidade da textualidade', '". 
+
+utf8_encode($statement = "INSERT INTO Produtos(nome,descricao) VALUES('As várias formas de identidade da textualidade', '". 
         addslashes("O observador poderá no futuro ser interpolado em um tipo de 'contato poético interpretativo' que "
                 . "inclui a linguagem como uma forma de cosmos. De certa forma, admitindo-se o paradigma semi-cultural "
                 . "do Ocidente, temos de optar entre a teoria nacionalista do paradigma e o paradigma semi-cultural do "
                 . "Ocidente. O tema contundente da crítica de Souza (1976) sobre o conservacionismo neo-participativo "
                 . "poderá no futuro ser não, na prática, paródia, mas sim pré-paródia. Jacques Lacan emprega a expressão "
                 . "'paradigma semi-cultural do Ocidente' para referir-se a um absurdo referencial."
-                ) ."')";
+                ) ."')");
+
 $conexao->exec($statement);
 
 echo "========================== OK ============================================ \n\n";
@@ -117,7 +128,7 @@ echo "========================== OK ============================================
 echo "========================== Inserindo dados em Servicos =================== \n\n";
 
 // Insere dados na tabela Servicos
-$statement = "INSERT INTO Servicos(descricao) VALUES('". 
+utf8_encode($statement = "INSERT INTO Servicos(descricao) VALUES('". 
         addslashes("De tal maneira, o produtor tem sido interpolado em um tipo de 'conservacionismo neo-participativo' que "
                 . "inclui a consciência como uma forma de perfeição. A expressão literária, e alguns diriam a economia, do "
                 . "conservacionismo neo-participativo que se identifica em 'A república dos sonhos' também é evidenciada em "
@@ -133,9 +144,11 @@ $statement = "INSERT INTO Servicos(descricao) VALUES('".
                 . "Uma abundância de hierarquias referentes ao conservacionismo neo-participativo podem ser propostas. Assim, "
                 . "o valor atual do paradigma semi-cultural do Ocidente deduz de como a sociedade, talvez ironicamente, possui "
                 . "uma possibilidade teórica. Um número de construções referentes a uma realidade auto-referencial existem."
-                ) ."')";
+                ) ."')");
+
 $conexao->exec($statement);
-$statement = "INSERT INTO Servicos(descricao) VALUES('". 
+
+utf8_encode($statement = "INSERT INTO Servicos(descricao) VALUES('". 
         addslashes("O leitor costumou ser contextualizado em um tipo de 'conservacionismo neo-participativo' que inclui a "
                 . "linguagem como uma forma de paradoxo. Buxton (1990) permite de como temos de optar entre o paradigma "
                 . "semi-cultural do Ocidente e o contato poético interpretativo. De tal maneira, o crítico tem sido analisado "
@@ -152,7 +165,8 @@ $statement = "INSERT INTO Servicos(descricao) VALUES('".
                 . "interpretativo é não, na prática, narrativa, mas sim sub-narrativa. O poeta é interpolado em um tipo de "
                 . "'conservacionismo neo-participativo' que inclui a realidade como uma forma de efeito. Inúmeros significados "
                 . "referentes ao conservacionismo neo-participativo podem ser obtidos."
-                ) ."')";
+                ) ."')");
+
 $conexao->exec($statement);
 
 echo "========================== OK ============================================ \n\n";
@@ -176,7 +190,7 @@ echo "========================== Inserindo dados em Páginas ===================
 
 // Insere dados na tabela Páginas
 
-$statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('index', 'Site Simples em PHP','". 
+utf8_encode($statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('index', 'Site Simples em PHP','". 
         addslashes("<p class=\"lead\">Oswald de Andrade e a narrativa pós-imaterial</p><p>Ao examinar-se a teoria narrativa do "
                 . "código, uma escolha se faz necessária: ou desaprovar o capital hierárquico ou concluir de como a sociedade "
                 . "possui uma possibilidade teórica. A desconstrução da teoria narrativa do código possibilita de como o intuito "
@@ -196,9 +210,11 @@ $statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('index', 'Site Sim
                 . "pós-participativa, temos de escolher entre a teoria intertextual pós-participativa e a teoria intertextual "
                 . "pós-participativa. Contudo, Dahmus (2007) possibilita de como temos de decidir entre o capital hierárquico e "
                 . "a teoria intertextual pós-participativa.</p>"
-                ) ."')";
+                ) ."')");
+
 $conexao->exec($statement);
-$statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('empresa', 'Empresa','". 
+
+utf8_encode($statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('empresa', 'Empresa','". 
         addslashes("<p>Gloria Anzaldúa propõe a expressão 'paradigma sub-metonímico do contexto' para exprimir não, na verdade, "
                 . "situacionismo, mas sim não-situacionismo. Dahmus (2005) afirma de como o corpus de Jack Kerouac costumou ser "
                 . "de feitura modernista. O tema de maior abrangência da produção Jack Kerouac é o papel do poeta como produtor. "
@@ -207,6 +223,7 @@ $statement = "INSERT INTO Paginas(nome, titulo, texto) VALUES('empresa', 'Empres
                 . "contextualizado em um tipo de 'teoria narrativa do código' que inclui a metanarratividade como uma forma de "
                 . "totalidade. Dahmus (2000) permite de como temos de escolher entre a matéria semântica e a teoria intertextual "
                 . "pós-participativa.</p>"
-                ) ."')";
+                ) ."')");
+
 $conexao->exec($statement);
 echo "========================== OK ============================================ \n\n";

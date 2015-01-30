@@ -37,18 +37,21 @@ function getPage($pageName) {
                 $stmt = $db->prepare($sql);
                 $stmt->bindValue("nome", $pageName);
                 $stmt->execute();
-                //return $result;
-                return $stmt;
+                
+                return $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
                 break;
             case "produto":
+                 $sql = "SELECT * FROM Produtos";
+                 $stmt = $db->prepare($sql);
+                 $stmt->execute();
+                 return $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+                 break;
             case "servico":
-                $sql = "SELECT nome,descricao from Produtos GROUP BY nome = :nome and descricao = :descricao";
+                $sql = "SELECT * from Servicos";
                 $stmt = $db->prepare($sql);
-                $stmt->bindValue("nome", $pageName);
-                $stmt->bindValue("descricao", $pageName);
                 $stmt->execute();
-                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $result;
+                return $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 break;
         }
     } catch (Exception $exc) {
