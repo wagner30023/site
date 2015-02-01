@@ -4,5 +4,5 @@ $host = "localhost";
 $dbname = "site";
 
 define("USER", "root");
-define("PASS", "k299");
+define("PASS", "root");
 define("DSN", "mysql:host=".$host.";dbname=".$dbname);

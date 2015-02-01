@@ -1,6 +1,6 @@
 <?php
 
-require_once './src/config/bd_config.php';
+require_once __DIR__ . '/src/config/bd_config.php';
 
 try {
     $conexao = new PDO(DSN, USER, PASS);
