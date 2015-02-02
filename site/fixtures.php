@@ -1,6 +1,6 @@
 <?php
 
-require_once './src/config/bd_config.php';
+require_once __DIR__ . '/src/config/bd_config.php';
 
 try {
     $conexao = new PDO(DSN, USER, PASS);
@@ -13,7 +13,7 @@ echo "========================== Criando banco de dados ========================
 $statement = "DROP DATABASE site";
 $conexao->exec($statement);
 // Cria o Banco de Dados
-$statement = "CREATE DATABASE IF NOT EXISTS site";
+$statement = "CREATE DATABASE site";
 $conexao->exec($statement);
 // Seleciona o Banco de Dados
 $statement = "USE site";
