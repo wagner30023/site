@@ -1,6 +1,6 @@
-
+<?php include_once 'header.php'; ?>
 <div class="container text-center">
-    <div class="row">
+
         <?php include 'header.php'; ?>
 
         <?php
@@ -19,7 +19,6 @@
               </div>
             <?php
         endforeach;
-        ?>
-    </div>
+?>
 </div>
 <?php include 'footer.php' ?>

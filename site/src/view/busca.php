@@ -2,7 +2,7 @@
 
 <?php
 if (!isset($_GET['busca'])):
-    header("Location:http://localhost:9909/busca?busca=");
+    header("Location:<a href=\"\#busca indefinida/> </a>");
 else:
     $resultado = busca($_GET['busca']);
 endif;
