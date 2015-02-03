@@ -2,11 +2,11 @@
 
 return array(
     'route' => array(
-        ''    => 'home.php',
+        ''  => 'home.php',
         'empresa' => 'empresa.php',
         'produto' => 'produto.php',
         'servico' => 'servico.php',
         'contato' => 'contato.php',
-        'busca' => 'busca.php'
+        'busca' => 'busca.php',
     )
 );

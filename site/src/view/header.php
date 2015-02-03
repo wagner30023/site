@@ -44,7 +44,7 @@
                     </div>
 
                     <form class="navbar-form pull-left" id="busca" action="/busca">
-                        <input type="text" name="busca" class="search-query" placeholder="Pesquisar">
+                        <input type="text" name="busca" class="search-query"   placeholder="Pesquisar">
                         <button type="submit" class="btn"><span class="icon-search icon-large"> </span></button>
                     </form>
                 </div>
