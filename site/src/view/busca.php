@@ -31,7 +31,7 @@ if($busca){
         if (count($paginas)) {
             foreach ($paginas as $pagina) {
                 if ($pagina["nome"] == "index") {
-                    echo "<a href=\"/home\">Home</a><br />";
+                    echo "<a href=\"/\">Home</a><br />";
                 } else {
                     echo "<a href=\"/{$pagina['nome']}\">{$pagina['titulo']}</a><br />";
                 }
