@@ -1,11 +1,15 @@
 <?php include_once "header.php"; ?>
 
 <?php
-if (!isset($_GET['busca'])):
-    header("Location:<a href=\"\#busca indefinida/> </a>");
-else:
-    $resultado = busca($_GET['busca']);
-endif;
+
+$busca = filter_input(INPUT_GET,"busca");
+
+if($busca){
+    $resultado = busca($busca);
+} else {
+    header("Location:/");
+}
+
 ?>
 <div class="container">
     <div class="page-header">

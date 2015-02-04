@@ -2,7 +2,7 @@
 
 
 function getConnection() {
-    return new \PDO(DSN, USER, PASS);
+    return new \PDO(DSN, USER, PASS,array(PDO::ERRMODE_EXCEPTION));
 }
 
 function getPage($pageName) {
@@ -51,19 +51,19 @@ function busca($termo) {
     $db = getConnection();
     $stmt = $db->prepare("SELECT * FROM Paginas WHERE LIKE texto = :termo");
     $termo = "%{$termo}%";
-    $stmt->bindParam("termo", $termo);
+    $stmt->bindParam(":termo", $termo);
     $stmt->execute();
     $result["Paginas"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $stmt = $db->prepare("SELECT * FROM Produtos WHERE descricao LIKE :termo");
     $termo = "%{$termo}%";
-    $stmt->bindParam("termo", $termo);
+    $stmt->bindParam(":termo", $termo);
     $stmt->execute();
     $result["Produtos"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $stmt = $db->prepare("SELECT * FROM Servicos WHERE descricao LIKE :termo");
     $termo = "%{$termo}%";
-    $stmt->bindParam("termo", $termo);
+    $stmt->bindParam(":termo", $termo);
     $stmt->execute();
     $result["Servicos"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
