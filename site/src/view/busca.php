@@ -45,11 +45,6 @@ if($busca){
         if (count($servicos)) {
             echo "<a href=\"/servico\">Serviços</a><br />";
         }
-        
-        
-        if (count($servicos)) {
-            echo "<a href=\"/empresa\"> Empresa </a><br />";
-        }
     }
     ?>
 </div>
