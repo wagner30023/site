@@ -19,7 +19,33 @@ $conexao->exec($statement);
 $statement = "USE site";
 $conexao->exec($statement);
 
-echo "========================== OK ============================================\n\n";
+
+// Criando tabela Login 
+echo "========================== Criando table login ======================== \n";
+
+$statement = "CREATE TABLE IF NOT EXISTS `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `senha` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+"; 
+
+$conexao->exec($statement);
+
+echo "========================== OK ============================================ \n\n";
+
+echo "\n\n========================== Inserindo dados em login ===================\n\n";
+
+// Insere dados na tabela login
+utf8_encode($statement = "INSERT INTO `login` (`id`, `usuario`, `senha`) VALUES
+(1, 'admin', 'admin');");
+$conexao->exec($statement);
+
+
+
+echo "========================== OK ============================================ \n\n";
+
 
 // Cria a tabela Produtos
 

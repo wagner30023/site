@@ -1,0 +1,45 @@
+.box {
+    max-width: 350px;
+    margin: 10% auto; 
+    background: #FFF;
+    height: 280px;
+}
+
+.box form {
+    width: 85%; 
+    padding: 10% 0;
+}
+
+.box fieldset {
+    border: 0; 
+}
+
+.box legend {
+    font-size: 20px;
+    margin-bottom: 10%;
+    color:#777777;
+    text-transform: uppercase;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+    width: 100%;
+    border: 1px solid #CCC;
+    padding: 15px 10px; 
+    margin-bottom: 5px;
+}
+
+.box input[type="submit"] {
+    width: 107%;
+    font-size: 16px; 
+    border: 0; 
+    background: #CCC;
+    color: #FFF;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.box  input[type="submit"]:hover {
+    background: #777777;
+}
+

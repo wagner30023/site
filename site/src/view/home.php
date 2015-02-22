@@ -1,6 +1,7 @@
-<?php
+<?php    
+//require_once 'logado.php';
 include_once "header.php";
-$pagina = getPage("index");
+    $pagina = getPage("index");
 ?>
 <img src="img/tree.png" id="img" />
 <div class="container">
@@ -11,4 +12,7 @@ $pagina = getPage("index");
         </div>
     </div>
 </div>
-<?php include_once "footer.php"; ?>
+
+<?php 
+include_once "footer.php"; 
+?>

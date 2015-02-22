@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="/css/style.css" /> 
         <link rel="stylesheet" href="/css/styles.css" /> 
         <link rel="stylesheet" href="/css/custom.css" /> 
+        <link rel="stylesheet" href="/css/formStyle.css" />
+
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -40,6 +42,7 @@
                             <li><a href="/produto"> <span class="icon-large icon-shopping-cart"> </span>  Produtos </span> </a></li>
                             <li><a href="/servico"> <span class="icon-large  icon-list-alt"> </span>  Serviços </span> </a></li>
                             <li><a href="/contato"> <span class="icon-large  icon-envelope"> </span>  Contato </span> </a> </li>
+                            <li><a href="/login"> <span class="icon-large  icon-user"> </span>  Login </span> </a> </li>
                         </ul>
                     </div>
 
@@ -48,7 +51,7 @@
                         <button type="submit" class="btn"><span class="icon-search icon-large"> </span></button>
                     </form>
                 </div>
-              
+
             </div>
 
         </nav>

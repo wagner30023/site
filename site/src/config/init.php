@@ -39,7 +39,7 @@ function listarConteudo($pagina) {
         $conexao = getConnection();
         $sql = "SELECT * FROM Paginas WHERE nome = :nome";
         $stmt = $conexao->prepare($sql);
-        $stmt->bindValue("nome", $pagina);
+        $stmt->bindValue(":nome", $pagina);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (\PDOException $e) {

@@ -8,5 +8,6 @@ return array(
         'servico' => 'servico.php',
         'contato' => 'contato.php',
         'busca' => 'busca.php',
+        'login' => 'login.php'
     )
 );
