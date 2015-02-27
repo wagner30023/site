@@ -13,24 +13,31 @@ and open the template in the editor.
     $usuario = filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_SPECIAL_CHARS);
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
+    echo "<pre>";
+        var_dump($usuario). "<b/ >";
+        var_dump($senha). "<b/ >";
+    echo "</pre>";
 
-    $sql = "SELECT * FROM login WHERE usuario = :usuario and senha = :senha";
+
+
     $usuario = ($sql = array("usuario" => $usuario));
-    if (password_verify($senha,$usuario['senha'])) {
-        # password_verify($_POST["_password"], $user["password"]
-        $_SESSION["logado"] = TRUE;
-        $_SESSION["usuario"] = $usuario;
-                
-        header("Location: /");
-    } 
-    elseif($usuario and $senha == ''){       
-        echo "Digite seu nome de usuario e senha.";
-    }
-    elseif($usuario and $senha == false){
-        unset($_SESSION['user']);
-        $_SESSION["logado"] = FALSE;
-        header("Location: /login");
-        $error = "Dados inválidos. Tente novamente";
+    if (isset($usuario) && isset($senha["_senha"])) {
+        $sql = "SELECT * FROM login WHERE usuario = :usuario and senha = :senha";
+        if (password_verify($senha["_senha"], $usuario['senha'])) {
+            #password_verify($_POST["_password"], $user["password"]
+            $_SESSION["logged"] = TRUE;
+            $_SESSION["usuario"] = $usuario["usuario"];
+
+            header("Location: /admin");
+            die();
+        } elseif ($usuario and $senha == '') {
+            echo "Digite seu nome de usuario e senha.";
+        } else {
+            //unset($_SESSION['user']);
+            //$_SESSION["logado"] = FALSE;
+            //header("Location: /login");
+            $error = "Dados inválidos. Tente novamente";
+        }
     }
 
     if (isset($error)) {
@@ -45,14 +52,11 @@ and open the template in the editor.
         echo '</div>';
         unset($_SESSION['mensagem']);
     }
-    
-    if (isset($_GET['action']) && $_GET['action'] == 'logoff') {
-    $_SESSION['logado'] = false;
-    header('Location: /');
-}
 
-    
-    
+    if (isset($_GET['action']) && $_GET['action'] == 'logoff') {
+        $_SESSION['logado'] = false;
+        header('Location: /');
+    }
     ?>
     <form  method="POST" action="/login">
         <fieldset>
