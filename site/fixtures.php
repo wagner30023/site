@@ -45,10 +45,10 @@ $sql = "INSERT INTO `login` (`id`, `usuario`, `senha`) VALUES (:id, :usuario, :s
  $statement = $noReturnQuery($sql, array(
     "id"        => 1,
     "usuario"  => adminUname,
-    "senha"  =>  encodePassword(adminPword)
+    "senha"  => encodePass(adminPword)
 ));
 
-$conexao->exec($statement);
+//$conexao->exec($statement);
 
 
 

@@ -8,7 +8,8 @@ return array(
         'servico' => 'servico.php',
         'contato' => 'contato.php',
         'busca' => 'busca.php',
-        'login' => 'login.php'
+        'login' => 'login.php',
+        '/admin' => 'admin.php'
     ), 
       "site" => array(
         "adminUname" => "admin",

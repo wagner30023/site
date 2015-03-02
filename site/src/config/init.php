@@ -1,14 +1,11 @@
 <?php
 
-
 function getConnection() {
-    return new \PDO(DSN, USER, PASS,array(PDO::ERRMODE_EXCEPTION));
+    return new \PDO(DSN, USER, PASS, array(PDO::ERRMODE_EXCEPTION => PDO::ERRMODE_EXCEPTION));
 }
 
 try {
-    $conn = new \PDO(
-            "{$config['db']['driver']}:host={$config['db']['host']};dbname={$config['db'][$dbname]}", $config["db"][USER], $config["db"][PASS]
-    );
+    $conn = new PDO(DSN, USER, PASS, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 } catch (Exception $exc) {
     echo $exc->getTraceAsString();
 }
@@ -18,15 +15,15 @@ function getPage($pageName) {
         $db = getConnection();
         switch ($pageName) {
             case "index":
-            case "empresa":                                
-                $result = listarConteudo($pageName);                
+            case "empresa":
+                $result = listarConteudo($pageName);
                 break;
             case "produto":
-                 $sql = "SELECT * FROM Produtos";
-                 $stmt = $db->prepare($sql);
-                 $stmt->execute();
-                 $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-                 break;
+                $sql = "SELECT * FROM Produtos";
+                $stmt = $db->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+                break;
             case "servico":
                 $sql = "SELECT * from Servicos";
                 $stmt = $db->prepare($sql);
@@ -52,7 +49,7 @@ function listarConteudo($pagina) {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (\PDOException $e) {
         die("Error código: " . $e->getCode() . ": " . $e->getMessage());
-    }    
+    }
 }
 
 function busca($termo) {
@@ -78,13 +75,13 @@ function busca($termo) {
     return $result;
 }
 
-function encodePass($params){
-    return password_hash($params,PASSWORD_DEFAULT);
+function encodePass($params) {
+    return password_hash($params, PASSWORD_DEFAULT);
 }
 
 $noReturnQuery = function($sql, array $params = array()) use ($conn) {
     $stmt = $conn->prepare($sql);
-    
+
     if (!$stmt->execute($params)) {
         echo $sql;
         die(print_r($stmt->errorInfo()));

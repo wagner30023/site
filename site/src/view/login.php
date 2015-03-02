@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <?php include 'header.php' ?>
 
 <div class="box">
@@ -13,30 +9,24 @@ and open the template in the editor.
     $usuario = filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_SPECIAL_CHARS);
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    echo "<pre>";
-        var_dump($usuario). "<b/ >";
-        var_dump($senha). "<b/ >";
-    echo "</pre>";
+    $pdo = getConnection();
+    $sql = "SELECT * FROM login WHERE usuario = :usuario";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":usuario", $usuario);
 
+    $stmt->execute();
+    
+    if ($stmt->execute()) {
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-    $usuario = ($sql = array("usuario" => $usuario));
-    if (isset($usuario) && isset($senha["_senha"])) {
-        $sql = "SELECT * FROM login WHERE usuario = :usuario and senha = :senha";
-        if (password_verify($senha["_senha"], $usuario['senha'])) {
-            #password_verify($_POST["_password"], $user["password"]
-            $_SESSION["logged"] = TRUE;
-            $_SESSION["usuario"] = $usuario["usuario"];
-
+        if (password_verify($senha, $usuario['senha'])) {
+            $_SESSION["logado"] = TRUE;
             header("Location: /admin");
             die();
-        } elseif ($usuario and $senha == '') {
-            echo "Digite seu nome de usuario e senha.";
         } else {
-            //unset($_SESSION['user']);
-            //$_SESSION["logado"] = FALSE;
-            //header("Location: /login");
+            $_SESSION["logado"] = FALSE;
             $error = "Dados inválidos. Tente novamente";
+            //header("Location: /login");
         }
     }
 
@@ -45,18 +35,6 @@ and open the template in the editor.
     }
 
 
-    if (isset($_SESSION['mensagem'])) {
-        echo '<div class="alert alert-dismissable alert-danger">';
-        echo '<button type="button" class="close" data-dismiss="alert">×</button>';
-        echo '<strong>Aviso!</strong><br>' . $_SESSION['mensagem'];
-        echo '</div>';
-        unset($_SESSION['mensagem']);
-    }
-
-    if (isset($_GET['action']) && $_GET['action'] == 'logoff') {
-        $_SESSION['logado'] = false;
-        header('Location: /');
-    }
     ?>
     <form  method="POST" action="/login">
         <fieldset>
