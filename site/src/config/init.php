@@ -5,6 +5,14 @@ function getConnection() {
     return new \PDO(DSN, USER, PASS,array(PDO::ERRMODE_EXCEPTION));
 }
 
+try {
+    $conn = new \PDO(
+            "{$config['db']['driver']}:host={$config['db']['host']};dbname={$config['db'][$dbname]}", $config["db"][USER], $config["db"][PASS]
+    );
+} catch (Exception $exc) {
+    echo $exc->getTraceAsString();
+}
+
 function getPage($pageName) {
     try {
         $db = getConnection();
@@ -69,3 +77,16 @@ function busca($termo) {
 
     return $result;
 }
+
+function encodePass($params){
+    return password_hash($params,PASSWORD_DEFAULT);
+}
+
+$noReturnQuery = function($sql, array $params = array()) use ($conn) {
+    $stmt = $conn->prepare($sql);
+    
+    if (!$stmt->execute($params)) {
+        echo $sql;
+        die(print_r($stmt->errorInfo()));
+    }
+};

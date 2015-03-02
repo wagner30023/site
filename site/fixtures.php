@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/src/config/bd_config.php';
+require_once __DIR__ . '/src/config/init.php';
 
 try {
     $conexao = new PDO(DSN, USER, PASS);
@@ -38,8 +39,15 @@ echo "========================== OK ============================================
 echo "\n\n========================== Inserindo dados em login ===================\n\n";
 
 // Insere dados na tabela login
-utf8_encode($statement = "INSERT INTO `login` (`id`, `usuario`, `senha`) VALUES
-(1, 'admin', 'admin');");
+
+$sql = "INSERT INTO `login` (`id`, `usuario`, `senha`) VALUES (:id, :usuario, :senha);";
+
+ $statement = $noReturnQuery($sql, array(
+    "id"        => 1,
+    "usuario"  => adminUname,
+    "senha"  =>  encodePassword(adminPword)
+));
+
 $conexao->exec($statement);
 
 
