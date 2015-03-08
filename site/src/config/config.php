@@ -9,7 +9,8 @@ return array(
         'contato' => 'contato.php',
         'busca' => 'busca.php',
         'login' => 'login.php',
-        '/admin' => 'admin.php'
+        'logout' => 'logout.php',
+        'admin' => 'admin/admin.php'
     ), 
       "site" => array(
         "adminUname" => "admin",

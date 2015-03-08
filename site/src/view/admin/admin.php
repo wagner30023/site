@@ -1,3 +1,5 @@
+<?php include __DIR__.'../../header.php' ?>
+
 <div class="container">
     <div class="row">
         <div class="page-header">
@@ -7,7 +9,7 @@
     <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
             <form>
-                <select name="_editPage" class="form-control">
+                <select name="editPage" class="form-control">
                     <option selected>Selecione uma área para editar</option>
                     <option disabled>&nbsp;</option>
                     <option value="home">Home</option>
@@ -19,3 +21,4 @@
         </div>
     </div>
 </div>
+<?php include __DIR__.'../../footer.php' ?>   

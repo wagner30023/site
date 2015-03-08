@@ -42,7 +42,18 @@
                             <li><a href="/produto"> <span class="icon-large icon-shopping-cart"> </span>  Produtos </span> </a></li>
                             <li><a href="/servico"> <span class="icon-large  icon-list-alt"> </span>  Serviços </span> </a></li>
                             <li><a href="/contato"> <span class="icon-large  icon-envelope"> </span>  Contato </span> </a> </li>
-                            <li><a href="/login"> <span class="icon-large  icon-user"> </span>  Login </span> </a> </li>
+                            <li class="dropdown">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="/login"> <span class="icon-large  icon-user"> </span> Login </a></li>
+                                            <li><a href="#"> <span class="icon-large  icon-tag"> </span> Alterar senha </a></li>
+                                            <li><a href="/logout"> <span class="icon-large  icon-off"> </span> Sair </a></li>
+                                            <li class="divider"></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                         </ul>
                     </div>
 
