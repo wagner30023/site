@@ -13,4 +13,4 @@ Banco de dados MySQL
 Fixture
 Necessário criar banco de dados com o nome site
 O usuário padrão é root => modifique usuário e  senha para o padrão local se for necessário.  
-Para executar a fixture acessar fixture.php
+
